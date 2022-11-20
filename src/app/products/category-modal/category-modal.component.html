@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Choose category</h1>
+<div mat-dialog-content>
+      <mat-action-list *ngFor="let category of data.categories">
+        <button mat-list-item (click)="openProductModal(category.id)">{{category.name}}</button>
+      </mat-action-list>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="cancel()">Cancel</button>
+</div>

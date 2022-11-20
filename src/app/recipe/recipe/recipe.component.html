@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>Recommended recipies</h1>
+<div mat-dialog-content>
+  <mat-accordion *ngFor="let recipe of data.recipies">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ recipe.title }}
+        </mat-panel-title>
+        <mat-panel-description>
+          Likes: {{ recipe.likes }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <img [src]="recipe.image" />
+      <p>Ingredients from fridge:</p>
+      <ul *ngFor="let used of recipe.usedIngredients">
+        <li>{{used.name}} - {{used.original}}</li>
+      </ul>
+      <p>Ingredients you need to buy:</p>
+      <ul *ngFor="let unused of recipe.usedIngredients">
+        <li>{{unused.name}} - {{unused.original}}</li>
+      </ul>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <!-- <ng-container *ngFor="let recipe of data.recipies">
+        <mat-card>
+            <mat-card-content>
+                {{recipe | json}}
+            </mat-card-content>
+        </mat-card>
+     </ng-container> -->
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="cancel()">Ok</button>
+</div>

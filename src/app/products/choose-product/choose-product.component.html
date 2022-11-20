@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Choose product</h1>
+<div mat-dialog-content>
+    <mat-action-list *ngFor="let category of categories">
+      <button mat-list-item (click)="addItem(category.id, category.name)">{{category.name}}</button>
+    </mat-action-list>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+</div>
