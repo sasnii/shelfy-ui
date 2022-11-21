@@ -16,7 +16,7 @@
         <li>{{used.name}} - {{used.original}}</li>
       </ul>
       <p>Ingredients you need to buy:</p>
-      <ul *ngFor="let unused of recipe.usedIngredients">
+      <ul *ngFor="let unused of recipe.missedIngredients">
         <li>{{unused.name}} - {{unused.original}}</li>
       </ul>
     </mat-expansion-panel>

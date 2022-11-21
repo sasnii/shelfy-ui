@@ -50,83 +50,14 @@ export class ProductsService {
   
   getItems$(): Observable<Item[]> {
     return this.http.get<Item[]>(`${baseUrl}/getItems`);
-    // return of([
-    //   {
-    //     id: 1,
-    //     productId: 1,
-    //     expirationDate: '1668868600',
-    //     description: 'description_1',
-    //     quantity: 1,
-    //   },
-    //   {
-    //     id: 2,
-    //     productId: 2,
-    //     expirationDate: '1668868600',
-    //     description: 'description_2',
-    //     quantity: 2,
-    //   },
-    // ]);
   }
   
   getCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(`${baseUrl}/getCategories`);
-    return of([
-      {
-        id: 1,
-        name: 'milk products',
-      },
-      {
-        id: 2,
-        name: 'meat and fish',
-      },
-      {
-        id: 3,
-        name: 'fruits',
-      },
-      {
-        id: 4,
-        name: 'vegetables',
-      },
-      {
-        id: 5,
-        name: 'grain products',
-      },
-      {
-        id: 6,
-        name: 'other',
-      },
-    ]);
   }
   
   getProductsByCategory(id: number): Observable<any> {
     return this.http.get(`${baseUrl}/getProducts/${id}`);
-    return of([
-      {
-      "id": 4,
-      "name": "chicken",
-      "validDays": 7
-      },
-      {
-      "id": 5,
-      "name": "turkey",
-      "validDays": 7
-      },
-      {
-      "id": 6,
-      "name": "beef",
-      "validDays": 7
-      },
-      {
-      "id": 7,
-      "name": "salmon",
-      "validDays": 7
-      },
-      {
-      "id": 8,
-      "name": "cod",
-      "validDays": 7
-      }
-      ]);
   }
 
   addCategory(body: any): Observable<any> {
@@ -141,15 +72,41 @@ export class ProductsService {
     return this.http.post(`${baseUrl}/addItem`, body);
   }
 
-  editItem(id: number, body: any): Observable<any> {
-    return this.http.put(`${baseUrl}/addItem/${id}`, body);
+  removeWasted(id: number, body: any): Observable<any> {
+    return this.http.post(`${baseUrl}/removeItem?wasEaten=true`, {
+      id: id,
+      productId: 9,
+      date: '2022-11-20',
+      description: '',
+      count: 1
+    });
   }
 
-  deleteItem(id: number): Observable<any> {
-    return this.http.delete(`${baseUrl}/removeItem/${id}`);
+  removeEaten(id: number, body: any): Observable<any> {
+    return this.http.post(`${baseUrl}/removeItem?wasEaten=false`, {
+      id: id,
+      productId: 9,
+      date: '2022-11-20',
+      description: '',
+      count: 1
+    });
   }
+
+  // deleteItem(id: number): Observable<any> {
+  //   return this.http.delete(`${baseUrl}/removeItem`, {
+  //     productId: id,
+  //     date: new Date(),
+  //     description: '',
+  //     count: 0,
+  //     wasEaten: false
+  //   });
+  // }
 
   getRecipies(ingredients: string[]): Observable<any> {
     return this.http.get(`${baseUrl}/getRecipesByIngredients/${ingredients.join(',')}`);
+  }
+
+  getStatistics(): Observable<any>{
+    return this.http.get(`${baseUrl}/statistics`);
   }
 }

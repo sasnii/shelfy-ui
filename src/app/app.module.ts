@@ -23,11 +23,14 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { RecipeComponent } from './recipe/recipe/recipe.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { StatisticsComponent } from './statistics/statistics/statistics.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatIconModule} from '@angular/material/icon';
 
 
 
 @NgModule({
-  declarations: [AppComponent, ProductListComponent, CategoryModalComponent, ProductModalComponent, AddItemComponent, ChooseProductComponent, RecipeComponent],
+  declarations: [AppComponent, ProductListComponent, CategoryModalComponent, ProductModalComponent, AddItemComponent, ChooseProductComponent, RecipeComponent, StatisticsComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -46,7 +49,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCardModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatProgressBarModule,
+    MatIconModule
   ],
   providers: [
     {provide: MatDatepickerModule, useValue: { useUtc: true }}

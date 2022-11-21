@@ -12,7 +12,7 @@ import { Item, ProductsService } from 'src/app/services/products.service';
 export class ProductListComponent implements OnInit {
 
   items: Item[] = [];
-  displayedColumns: string[] = ['id', 'name', 'date', 'description', 'quantity', 'actions'];
+  displayedColumns: string[] = ['name', 'date', 'description', 'quantity', 'status', 'actions'];
 
   
   constructor(
@@ -30,8 +30,12 @@ export class ProductListComponent implements OnInit {
     
   }
 
-  delete(id: number){
-    this.productService.deleteItem(id).subscribe(x => this.getItems());
+  used(id: number){
+    this.productService.removeEaten(id, {}).subscribe(x => this.getItems());
+  }
+
+  thrown(id: number){
+    this.productService.removeWasted(id, {}).subscribe(x => this.getItems());
   }
 
   showRecipe(){

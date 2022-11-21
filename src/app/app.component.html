@@ -1,13 +1,15 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="toolbar">
   <span>Shelfy</span>
+  <button mat-flat-button [routerLink]="'products'">Fridge</button>
+  <button mat-flat-button [routerLink]="'statistics'">Statistics</button>
 </mat-toolbar>
 <div class="wrapper">
   <h2>Welcome to Shelfy</h2>
-  <h4>Don't waste your food.</h4>
+  <h4>Buy less - waste less</h4>
   <br />
   <div>
     <button mat-raised-button color="primary" (click)="addProduct()">
-      Add Products
+      Add Product
     </button>
   </div>
   <router-outlet></router-outlet>
